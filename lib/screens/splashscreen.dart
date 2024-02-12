@@ -33,7 +33,7 @@ class _SplashscreenState extends State<Splashscreen> {
               "MIS-Lab3-201107",
               style: TextStyle(
                 color: Color.fromRGBO(49, 49, 131, 1),
-                fontSize: 36.0,
+                fontSize: 40.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: "Roboto",
                 decoration: TextDecoration.none,
@@ -46,8 +46,9 @@ class _SplashscreenState extends State<Splashscreen> {
               "Exam schedule",
               style: TextStyle(
                 color: Color.fromRGBO(42,147,209,1),
-                fontSize: 24.0,
+                fontSize: 30.0,
                 fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
                 fontFamily: "Roboto",
                 decoration: TextDecoration.none,
               ),

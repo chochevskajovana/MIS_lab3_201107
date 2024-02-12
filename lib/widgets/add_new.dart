@@ -68,7 +68,7 @@ class _NewExamState extends State<NewExam> {
     return Card(
       elevation: 5,
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
@@ -78,7 +78,7 @@ class _NewExamState extends State<NewExam> {
               onSubmitted: (_) => _submitData(),
             ),
             Container(
-              height: 70,
+              height: 80,
               child: Row(
                 children: <Widget>[
                   Expanded(

@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lab3_201107/widgets/authentication.dart';
-
 import '../models/Exam.dart';
 import '../widgets/add_new.dart';
 
@@ -17,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final CollectionReference _itemsCollection = FirebaseFirestore.instance
       .collection('exams');
-  List<Exam> _exams = [];
 
   void _addExam() {
     showModalBottomSheet(
@@ -73,7 +71,6 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     } catch (e) {
       print('Error during sign out: $e');
-      // Handle the error
     }
   }
 
@@ -81,7 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      // Find the document with matching subject, date, and userId
       var query = _itemsCollection
           .where('subject', isEqualTo: subject)
           .where('date', isEqualTo: date)
@@ -89,7 +85,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
       query.get().then((querySnapshot) {
         querySnapshot.docs.forEach((doc) {
-          // Delete the document with the found ID
           _itemsCollection.doc(doc.id).delete();
         });
       });
@@ -112,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   backgroundColor:
                   MaterialStatePropertyAll<Color>(Color.fromRGBO(49, 49, 131, 1))),
               child: const Text(
-                "Add exam",
+                "Add exam date",
                 style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
@@ -163,6 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 30,
+                                    color: Color.fromRGBO(49, 49, 131, 1)
                                   ),
                                 ),
                               ],
@@ -172,21 +168,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 Text(
                                   DateFormat('yyyy-MM-dd HH:mm').format(items[index].date),
-                                  style: const TextStyle(fontSize: 20, color: Colors.grey),
+                                  style: const TextStyle(fontSize: 20, color: Color.fromRGBO(42,147,209,1)),
                                 ),
                               ],
                             ),
                           ],
                         ),
                         Positioned(
-                          top: 5.0, // Adjust the top position according to your preference
-                          right: 5.0, // Adjust the right position according to your preference
+                          top: 7.0, // Adjust the top position according to your preference
+                          right: 7.0, // Adjust the right position according to your preference
                           child: IconButton(
                             icon: Icon(Icons.delete_forever_rounded),
                             onPressed: () {
                               _deleteExam(items[index].subject, items[index].date);
                             },
-                            color: Colors.red,
+                            color: Colors.purple,
                           ),
                         ),
                       ],
